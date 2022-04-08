@@ -23,6 +23,7 @@ public class MyTest extends BaseTest {
         myAllerts.disimiss();
         welcomPage.clickJSPrompt();
         myAllerts.sendText();
+        myAllerts.checkText();
 
     }
 }
