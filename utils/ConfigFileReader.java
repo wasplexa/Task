@@ -63,9 +63,21 @@ public class ConfigFileReader {
         if (browserName != null) return browserName;
         else throw new RuntimeException("url not specified in the Configuration.properties file.");
     }
+    public String getDomainName(){
+        String domainName = properties.getProperty("domain");
+        if (domainName != null) return domainName;
+        else throw new RuntimeException("domainName not specified in the Configuration.properties file.");
+    }
+    public String getEmailName(){
+        String domainName = properties.getProperty("email");
+        if (domainName != null) return domainName;
+        else throw new RuntimeException("domainName not specified in the Configuration.properties file.");
+    }
 
     public static void main(String[] args) {
         String login =configFileReader.getLogin();
         System.out.println(login);
+        String d = configFileReader.getDomainName();
+        System.out.println(d);
     }
 }

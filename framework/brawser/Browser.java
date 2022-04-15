@@ -23,7 +23,7 @@ public class Browser {
     }
 
     public void goTo(String url) {
-        driver.get(url);
+        BROWSER.getDriver().get(url);
     }
 
     public  WebDriver getDriver() {
