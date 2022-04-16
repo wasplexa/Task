@@ -8,15 +8,12 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
 public class RegistrationFirst {
     private static ConfigFileReader config = ConfigFileReader.configFileReader;
-
-
-
-    private Text clickToButtonHERE = new Text(By.xpath("//a[@class='start__link']"), "clickToButtonHERE");
     private Text passwordIn = new Text(By.xpath("//input[@placeholder='Choose Password']"), "passwordIn");
     private Text emailIn = new Text(By.xpath("//input[@placeholder='Your email']"), "emailIn");
     private Text domainIn = new Text(By.xpath("//input[@placeholder='Domain']"), "domainIn");
@@ -25,12 +22,6 @@ public class RegistrationFirst {
     private Text domainDrop = new Text(By.xpath("//div[@class='dropdown__list-item']"), "domainDrop");
     private Text clickAccept = new Text(By.xpath("//span[@class='checkbox']"), "clickAccept");
     private Browser browser = Browser.BROWSER;
-
-
-
-    public void clickButtonHERE() {
-        clickToButtonHERE.click();
-    }
 
     public void inputPassword() {
         passwordIn.clear();
@@ -49,7 +40,14 @@ public class RegistrationFirst {
 
     public void chooseDomain() {
         domainClick.click();
-        domainDrop.click();
+        Random random = new Random();
+        for (int i = 0; i < 1; i++) {
+            int item = random.nextInt(11);
+            if(domainDrop.findElements().get(item).getText().equals("other")){
+                i--;
+                continue;
+            }else domainDrop.findElements().get(item).click();
+        }
         browser.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
